@@ -4,6 +4,7 @@ title: Crunching the Calldata
 tagline: The next step for Ethereum rollups to cut transaction costs
 author: David Mihal
 authorLink: https://davidmihal.com
+image: https://blog-assets.cryptofees.info/japan-rush-hour.jpeg
 ---
 
 # Crunching the Calldata
@@ -146,6 +147,8 @@ Finally, let's combine all our techniques into one:
 * Use the Arbitrum address table to shorten other addresses
 
 All together, our calldata size is now just 6 bytes! [The final test transaction](https://arbiscan.io/tx/0xe1d30e1ae15bb49356b6b48cc001fe5b8b0847ce9f5c6311f13f0c79addd960d) used 426,529 (also a 26% decrease from the control, marginally lower than the previous test case), and costs $0.32.
+
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR1FpuZV9h97MX-iNRpaxMwA7__ke2J6jA1CoL3PNPPey07vobTbxo3BHM1Ynf5y4WY8SS26tCJ-A9l/pubchart?oid=1177948592&amp;format=interactive" width="600" height="400" />
 
 ### Other techniques: Lossy compression
 
