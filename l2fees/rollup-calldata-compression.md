@@ -105,6 +105,8 @@ To start this experiment, we'll send a "control" transaction to get a baseline c
 
 [Our test transaction](https://arbiscan.io/tx/0x7a4aac77d287f37e9263495227e768efe5df19622b35428f7d14833e1b096755) used 576,051 ArbiGas, for a total fee of $0.43.
 
+<Img src="rollup-calldata-compression/calldata-1.svg" />
+
 ### Simple calldata compression
 
 Looking at the calldata used for control case, we can see there's a lot of unnecessary data we can strip out.
@@ -115,6 +117,8 @@ There's also a 4-byte function signature at the beginning, which is an identifie
 
 These two optimizations let us reduce the bytecode from 100 bytes down to 43 bytes. [Our test transaction](https://arbiscan.io/tx/0x4b6b1462acc680745c2416bed606c9ef3a0f43888903f794d17e934ab3e419ae) used 494,485 (a 14% decrease), and costs $0.37.
 
+<Img src="rollup-calldata-compression/calldata-2.svg" />
+
 ### Deterministic "helper" contract
 
 The majority of our data is now made up of the two addresses in our calldata: one for the address of the token that we'll be transferring, the other for the recipient of the transfer.
@@ -123,6 +127,7 @@ However, we can imagine that most users are transferring the same few tokens (WE
 
 This lets us reduce our data bytecode down to 23 bytes. [Our test transaction](https://arbiscan.io/tx/0x3aa17d92aabe49a34e4edb9df63d5bc5d353a67f39ff891889dafcde1fc801bf) used 457,546 (a 21% decrease from the control), and costs $0.34.
 
+<Img src="rollup-calldata-compression/calldata-3.svg" />
 
 ### Address lookup-table
 
@@ -138,6 +143,8 @@ So what we can do is make a contract that will accept an "address index" in plac
 
 By replacing both the "token" and "recipient" addresses, we can reduce the calldata down to 9 bytes. [Our test transaction](https://arbiscan.io/tx/0x24f5a6f6c45a60852d45f3d3ac4fcd9ac177ad9e91eab8bd4f8f6756ccad7dc9) used 428,347 (a 26% decrease from the control), and costs $0.32.
 
+<Img src="rollup-calldata-compression/calldata-4.svg" />
+
 ### Now combine it all!
 
 Finally, let's combine all our techniques into one:
@@ -147,6 +154,8 @@ Finally, let's combine all our techniques into one:
 * Use the Arbitrum address table to shorten other addresses
 
 All together, our calldata size is now just 6 bytes! [The final test transaction](https://arbiscan.io/tx/0xe1d30e1ae15bb49356b6b48cc001fe5b8b0847ce9f5c6311f13f0c79addd960d) used 426,529 (also a 26% decrease from the control, marginally lower than the previous test case), and costs $0.32.
+
+<Img src="rollup-calldata-compression/calldata-5.svg" />
 
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR1FpuZV9h97MX-iNRpaxMwA7__ke2J6jA1CoL3PNPPey07vobTbxo3BHM1Ynf5y4WY8SS26tCJ-A9l/pubchart?oid=1177948592&amp;format=interactive" width="600" height="400" />
 
