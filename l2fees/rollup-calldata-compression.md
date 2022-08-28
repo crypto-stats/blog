@@ -9,6 +9,8 @@ image: https://blog-assets.cryptofees.info/japan-rush-hour.jpeg
 
 # Crunching the Calldata
 
+_[Click here to jump to the experiment & test dapp](#experiment-how-much-can-we-compress-a-simple-token-transfer)_
+
 Since 2020, Ethereum's scaling roadmap has been oriented around "rollups": independent execution environments that use proofs (either zero-knowledge proofs or optimistic fraud proofs) to inherit the security of Ethereum.
 
 After years of development, rollups have finally been deployed and are gaining adoption. The flagship [Arbitrum](https://arbitrum.io/) optimistic rollup has been live for nearly a year, with [over $2.7 billion worth of assets deposited into the bridge](https://l2beat.com/), while [Optimism](https://optimism.io/) tails closely behind. Application-specific zero-knowledge rollups like Loopring and dYdX have also seen substantial adoption, and many competing general-purpose zero-knowledge rollups are set to launch within the upcoming months.
